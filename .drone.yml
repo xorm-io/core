@@ -30,3 +30,13 @@ pipeline:
       - go test -v -race -coverprofile=coverage.txt -covermode=atomic
     when:
       event: [ push, tag, pull_request ]
+
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=core_test
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    when:
+      event: [ push, tag, pull_request ]
