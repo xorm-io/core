@@ -132,6 +132,7 @@ func (db *DB) Query(query string, args ...interface{}) (*Rows, error) {
 	return db.QueryContext(context.Background(), query, args...)
 }
 
+// QueryMapContext executes query with parameters via map and context
 func (db *DB) QueryMapContext(ctx context.Context, query string, mp interface{}) (*Rows, error) {
 	query, args, err := MapToSlice(query, mp)
 	if err != nil {
@@ -140,6 +141,7 @@ func (db *DB) QueryMapContext(ctx context.Context, query string, mp interface{})
 	return db.QueryContext(ctx, query, args...)
 }
 
+// QueryMap executes query with parameters via map
 func (db *DB) QueryMap(query string, mp interface{}) (*Rows, error) {
 	return db.QueryMapContext(context.Background(), query, mp)
 }

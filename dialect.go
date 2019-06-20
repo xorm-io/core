@@ -85,6 +85,7 @@ func OpenDialect(dialect Dialect) (*DB, error) {
 	return Open(dialect.DriverName(), dialect.DataSourceName())
 }
 
+// Base represents a basic dialect and all real dialects could embed this struct
 type Base struct {
 	db             *DB
 	dialect        Dialect

@@ -24,7 +24,7 @@ pipeline:
       - go get -u golang.org/x/lint/golint
       - go get -u github.com/stretchr/testify/assert
       - go get -u github.com/go-xorm/sqlfiddle
-      - golint ./...
+      #- golint ./...
       - go test -v -race -coverprofile=coverage.txt -covermode=atomic
     when:
       event: [ push, tag, pull_request ]
