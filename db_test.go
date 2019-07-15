@@ -17,6 +17,7 @@ import (
 
 var (
 	dbtype         = flag.String("dbtype", "mysql", "database type")
+	dbConn         = flag.String("dbConn", "root:@/core_test?charset=utf8", "database connect string")
 	createTableSql string
 )
 
@@ -50,7 +51,7 @@ func testOpen() (*DB, error) {
 		os.Remove("./test.db")
 		return Open("sqlite3", "./test.db")
 	case "mysql":
-		return Open("mysql", "root:@/core_test?charset=utf8")
+		return Open("mysql", *dbConn)
 	default:
 		panic("no db type")
 	}
