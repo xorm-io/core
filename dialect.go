@@ -311,7 +311,7 @@ func RegisterDialect(dbName DbType, dialectFunc func() Dialect) {
 	dialects[strings.ToLower(string(dbName))] = dialectFunc // !nashtsai! allow override dialect
 }
 
-// QueryDialect query if registed database dialect
+// QueryDialect query if registered database dialect
 func QueryDialect(dbName DbType) Dialect {
 	if d, ok := dialects[strings.ToLower(string(dbName))]; ok {
 		return d()
