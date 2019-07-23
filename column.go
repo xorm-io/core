@@ -101,7 +101,7 @@ func (col *Column) String(d Dialect) string {
 
 // StringNoPk generate column description string according dialect without primary keys
 func (col *Column) StringNoPk(d Dialect) string {
-	sql := d.Quote(col.Name)
+	sql := d.Quote(col.Name) + " "
 
 	sql += d.SqlType(col) + " "
 
