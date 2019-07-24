@@ -42,8 +42,7 @@ type Dialect interface {
 
 	IsReserved(string) bool
 	Quote(string) string
-	// Deprecated: use Quote(string) string instead
-	QuoteStr() string
+
 	AndStr() string
 	OrStr() string
 	EqStr() string
