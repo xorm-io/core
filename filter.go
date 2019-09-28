@@ -73,20 +73,14 @@ type SeqFilter struct {
 func convertQuestionMark(sql, prefix string, start int) string {
 	var buf strings.Builder
 	var beginSingleQuote bool
-	var beginTransfer bool
 	var index = start
 	for _, c := range sql {
 		if !beginSingleQuote && c == '?' {
 			buf.WriteString(fmt.Sprintf("%s%v", prefix, index))
 			index++
 		} else {
-			if c == '\\' {
-				beginTransfer = true
-			} else {
-				if !beginTransfer && c == '\'' {
-					beginSingleQuote = !beginSingleQuote
-				}
-				beginTransfer = false
+			if c == '\'' {
+				beginSingleQuote = !beginSingleQuote
 			}
 			buf.WriteRune(c)
 		}
